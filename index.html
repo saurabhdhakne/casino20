@@ -4,129 +4,629 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script src="https://threejs.org/build/three.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+<style>
+  body {
+  margin: 0;
+  padding: 0;
+  background: url("images/bg.svg");
+  background-size: cover;
+  background-position: fixed;
+  background-position: center;
+  z-index: 2;
+  overflow: hidden;
+  height: 100vh;
+}
+.rr1 {
+  height: 25vh;
+}
+.rr1 img{
+  position: absolute;
+  top: 40%;
+  left: 0;
+  transform: translateY(-40%);
+}
+.rr2 {
+  height: 10vh;
+}
+.rr2 .blinkmg{
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+#score {
+  padding: 2px;
+}
+#score1 {
+  font-size: 1.7em;
+  line-height: 1.9em;
+  padding-top: 2px;
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%, -50%);
+}
+.celebrate {
+  width: 20%;
+  position: fixed;
+  left: 50%;
+  top: 10%;
+  z-index: 9;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+.row {
+  margin: 0;
+  padding: 0;
+}
 
-    <link rel="stylesheet" href="css/style.css" />
+p {
+  font-size: 3vw;
+  z-index: 8;
+  color: snow;
+  position: absolute;
+  top: 35%;
+  left: 0%;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  text-shadow: 5px 5px 5px black;
+}
+
+.p2 {
+  font-size: 1.5vw;
+  z-index: 8;
+  color: snow;
+  position: absolute;
+  top: 35%;
+  text-shadow: 5px 5px 5px black;
+}
+.data10 {
+  position: absolute;
+  width: 60%;
+  top: 50%;
+  right: 30%;
+  background: rgb(110, 0, 0);
+  transform: translate(50%, -50%);
+  z-index: 7;
+  padding: 10px;
+  color: snow;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px black;
+  box-shadow: 0px 0px 50px gold;
+}
+.data10 span {
+  font-size: 1.2em;
+  border-radius: 10px;
+  vertical-align: center;
+}
+
+h1 {
+  color: snow;
+  text-shadow: 5px 5px 5px black;
+}
+.data10-2 {
+  position: fixed;
+  width: 85%;
+  top: 85%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  z-index: 7;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 1.1vw;
+  color: snow;
+  text-align: center;
+  border-radius: 10px;
+  z-index: 9;
+}
+
+.ot10head button {
+  padding: 8px;
+  border-radius: 6px;
+  background: rgb(255, 241, 52);
+  border: 1px solid rgb(131, 131, 131);
+  box-shadow: 0px 0px 30px rgb(255, 189, 46);
+  height: 30px;
+  color: black;
+  font-weight: bold;
+}
+.coinholder {
+  width: 100%;
+  z-index: 8;
+}
+.coinholder2 {
+  width: 100%;
+  z-index: 8;
+}
+
+.coincontainer {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  text-align: center;
+  z-index: 99999;
+}
+.coincontainer button {
+  z-index: 999999;
+}
+.coin {
+  margin: 0;
+  width: 12%;
+  z-index: 999999;
+}
+button {
+  background: none;
+  border: 0px;
+  padding: 0;
+  margin: 0;
+}
+
+.bottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.bottom .b2 img {
+  position: absolute;
+  bottom: 0;
+}
+
+.money {
+  width: 80%;
+  position: fixed;
+  top: 65%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  z-index: 7;
+}
+.arrow {
+  z-index: 8;
+  position: fixed;
+  width: 7%;
+  right: 46.5%;
+  top: -3%;
+  transform: translateY(50%, -50%);
+}
+.ring {
+  width: 100%;
+  z-index: 6;
+}
+
+.defaultRing2 {
+  transition: all 6s ease;
+}
+
+.shining {
+  position: fixed;
+  width: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 8;
+  animation: blinker 1s linear infinite;
+}
+.blinkmg {
+  cursor: pointer;
+  animation: blinker2 1.5s linear infinite;
+}
+
+@keyframes innerglow {
+  0% {
+    box-shadow: inset 0 0 0px black;
+  }
+  10% {
+    box-shadow: inset 0 0 20px salmon;
+  }
+  50% {
+    box-shadow: inset 0 0 25px dodgerblue;
+  }
+  100% {
+    box-shadow: inset 0 0 60px gold;
+  }
+}
+@keyframes outerglow {
+  0% {
+    box-shadow: 0 0 0px black;
+  }
+  10% {
+    box-shadow: 0 0 20px salmon;
+  }
+  50% {
+    box-shadow: 0 0 25px dodgerblue;
+  }
+  100% {
+    box-shadow: 0 0 60px gold;
+  }
+}
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+@keyframes blinker2 {
+  50% {
+    opacity: 0.7;
+  }
+}
+button {
+  z-index: 9;
+}
+
+</style>
   </head>
-  <body onclick="rotate(720+9);">
-    <div class="containt">
-      <div class="group1 score">
-        <img id="" src="images/score.svg" alt="score" />
-        <p id="score">000000</p>
-      </div>
-      <div class="group1 time">
-        <img id="" src="images/time.svg" alt="" />
-        <p id="time">000000</p>
-      </div>
-      <div class="group1 winner">
-        <img id="" src="images/winner.svg" alt="" />
-        <p id="winner">000000</p>
-      </div>
-      <div class="group1 last10data">
-        <img id="" src="images/last10data.svg" alt="" />
-        <div class="data10">
-          <span id="score">1</span>
-          <span id="score">1</span>
-          <span id="score">1</span>
-          <span id="score">1</span>
-          <span id="score">1</span>
-          <span id="score">1</span>
-          <span id="score">1</span>
-          <span id="score">1</span>
-          <span id="score">1</span>
-          <span id="score">1</span>
+  <body id="scene-container">
+
+    <div class="container-fluid p-0">
+      <div class="row">
+        <div class="col-4 row">
+          <div class="col-7 offset-1 text-center rr1">
+            <img
+              id="score"
+              src="images/score.svg"
+              width="100%"
+              class="innerShadow"
+              alt="score"
+              onclick="activeScore()"
+            />
+            <p id="score" class="">000000</p>
+          </div>
+          <div class="col-7 offset-1 text-center rr1">
+            <img
+              id="time"
+              src="images/time.svg"
+              class="innerShadow"
+              width="100%"
+              alt="score"
+            />
+            <p id="score" onclick="activeTime()" class="">
+              <span> 00 </span> : <span> 00 </span>
+            </p>
+          </div>
+          <div class="col-10 text-center rr2">
+            <div class="coinholder2 text-center">
+              <img
+                src="images/coinholder.svg"
+                class="blinkmg"
+                width="100%"
+                alt=""
+              />
+              <div class="coincontainer" style="z-index:99999;">
+                <button class="coin coin1" onclick="alert('im clicked ')">
+                  <img width="100%" src="images/coin1.svg" alt="" />
+                </button>
+                <button class="coin coin5" onclick="alert('im clicked ')">
+                  <img width="100%" src="images/coin5.svg" alt="" />
+                </button>
+                <button class="coin coin10" onclick="alert('im clicked ')">
+                  <img width="100%" src="images/coin10.svg" alt="" />
+                </button>
+                <button class="coin coin50" style="z-index:999999;" onclick="alert('im clicked ')">
+                  <img width="100%"  src="images/coin50.svg" alt="" />
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 offset-1 text-center rr1">
+            <img
+              id=""
+              src="images/take.svg"
+              class="blinkmg"
+              width="100%"
+              alt="score"
+            />
+          </div>
+
+          <div style="position: fixed; bottom: 0; width: 20%">
+            <img src="images/earn.svg" width="100%" alt="" />
+            <span
+              id="score"
+              onclick="reset();"
+              style="
+                position: absolute;
+                left: 30%;
+                bottom: 15%;
+                color: snow;
+                font-size: 2vw;
+              "
+              >000000</span
+            >
+          </div>
+        </div>
+
+        <div class="col-6 offset-3" style="position: fixed">
+          <img src="images/arraow.gif" class="arrow" alt="" />
+          <img
+            src="images/ring.png"
+            id="ring"
+            class="ring"
+            name="ring"
+            alt=""
+          />
+
+          <div class="data10-2 col-12">
+            <div class="col-12 mt-2 ot10head">
+              <button class="col-1 p-0 m-0">12345</button>
+              <button class="col-1 p-0 m-0">12</button>
+              <button class="col-1 p-0 m-0">12</button>
+              <button class="col-1 p-0 m-0">12</button>
+              <button class="col-1 p-0 m-0">12</button>
+              <button class="col-1 p-0 m-0">12</button>
+              <button class="col-1 p-0 m-0">12</button>
+              <button class="col-1 p-0 m-0">12</button>
+              <button class="col-1 p-0 m-0">12</button>
+              <button class="col-1 p-0 m-0">12</button>
+            </div>
+            <div class="col-12 mt-2">
+              <button class="col-1 p-0 m-0">
+                <img src="images/x (1).svg" id="w0" width="100%" alt="" />
+              </button>
+              <button class="col-1 p-0 m-0">
+                <img src="images/x (2).svg" id="w1" width="100%" alt="" />
+              </button>
+              <button class="col-1 p-0 m-0">
+                <img src="images/x (3).svg" id="w2" width="100%" alt="" />
+              </button>
+              <button class="col-1 p-0 m-0">
+                <img src="images/x (4).svg" id="w3" width="100%" alt="" />
+              </button>
+              <button class="col-1 p-0 m-0">
+                <img src="images/x (5).svg" id="w4" width="100%" alt="" />
+              </button>
+              <button class="col-1 p-0 m-0">
+                <img src="images/z (1).svg" id="w5" width="100%" alt="" />
+              </button>
+              <button class="col-1 p-0 m-0">
+                <img src="images/z (2).svg" id="w6" width="100%" alt="" />
+              </button>
+              <button class="col-1 p-0 m-0">
+                <img src="images/z (3).svg" id="w7" width="100%" alt="" />
+              </button>
+              <button class="col-1 p-0 m-0">
+                <img src="images/z (4).svg" id="w8" width="100%" alt="" />
+              </button>
+              <button class="col-1 p-0 m-0">
+                <img src="images/z (5).svg" id="w9" width="100%" alt="" />
+              </button>
+            </div>
+          </div>
+          <img src="images/money.svg" class="money" alt="" />
+        </div>
+
+        <div class="col-4"></div>
+
+        <div class="col-4 row" style="margin: 0">
+          <div class="col-7 offset-4 text-center rr1">
+            <img
+              id="winner"
+              src="images/winner.svg"absolute+
+              +
+              class="innerShadow"
+              width="100%"
+              alt="score"
+              onclick="activeWinner()"
+            />
+            <p id="score" class="">000000</p>
+          </div>
+
+          <div class="col-9 offset-3 text-center rr1">
+            <img
+              id="time"
+              src="images/last10data.svg"
+              class="innerShadow"
+              width="100%"
+              alt="score"
+            />
+            <p id="score1" class="">
+             5 7 6 4 3 9 6 4 0 0
+            </p>
+          </div>
+
+          <div class="col-10 offset-2 text-center pt-1 mt-2 rr2">
+            <div class="coinholder2 text-center">
+              <img
+                src="images/coinholder.svg"
+                class="blinkmg"
+                width="100%"
+                alt=""
+              />
+              <div class="coincontainer">
+                <button class="coin coin1">
+                  <img width="100%" src="images/coin100.svg" alt="" />
+                </button>
+                <button class="coin coin5">
+                  <img width="100%" src="images/coin500.svg" alt="" />
+                </button>
+                <button class="coin coin10">
+                  <img width="100%" src="images/1000.svg" alt="" />
+                </button>
+                <button class="coin coin50">
+                  <img width="100%" src="images/5000.svg" alt="" />
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-6 offset-5 text-center rr1">
+            <img
+              id=""
+              src="images/betok.svg"
+              class="blinkmg"
+              width="100%"
+              onclick="rotate(720+27);"
+              alt="score"
+            />
+          </div>
+
+          <img
+            src="images/exit.svg"
+            onclick="send(9);"
+            width="20%"
+            style="
+              position: fixed;
+              bottom: 0;
+              right: 0;
+              transition: all 5s ease;
+            "
+            alt=""
+          />
+
+          <img src="images/shining.svg" class="shining" alt="" />
         </div>
       </div>
-
-      <div class="div coinholder">
-        <img src="images/coinholder.svg" width="100%" alt="" />
-        <div class="coincontainer">
-          <button class="coin coin1">
-            <img width="100%" src="images/coin1.svg" alt="" />
-          </button>
-          <button class="coin coin5">
-            <img width="100%" src="images/coin5.svg" alt="" />
-          </button>
-          <button class="coin coin10">
-            <img width="100%" src="images/coin10.svg" alt="" />
-          </button>
-          <button class="coin coin50">
-            <img width="100%" src="images/coin50.svg" alt="" />
-          </button>
-        </div>
-      </div>
-
-      <div class="div coinholder2">
-        <img src="images/coinholder.svg" width="100%" alt="" />
-        <div class="coincontainer">
-          <button class="coin coin1">
-            <img width="100%" src="images/coin100.svg" alt="" />
-          </button>
-          <button class="coin coin5">
-            <img width="100%" src="images/coin500.svg" alt="" />
-          </button>
-          <button class="coin coin10">
-            <img width="100%" src="images/coin1k.svg" alt="" />
-          </button>
-          <button class="coin coin50">
-            <img width="100%" src="images/coin5k.svg" alt="" />
-          </button>
-        </div>
-      </div>
-      <div class="div bottom">
-        <img class="b1" src="images/1to0up.svg" alt="" />
-        <div class="data1t0">
-          <div id="score">1</div>
-          <div id="score">1</div>
-          <div id="score">1</div>
-          <div id="score">1</div>
-          <div id="score">1</div>
-          <div id="score">1</div>
-          <div id="score">1</div>
-          <div id="score">1</div>
-          <div id="score">1</div>
-          <div id="score">1</div>
-        </div>
-      </div>
-
-      <div class="div bottom2">
-        <img class="b1" src="images/1to0.svg" alt="" />
-      </div>
-
-      <div class="earn">
-        <img src="images/earn.svg" width="100%" alt="" />
-        <p>100000</p>
-      </div>
-      <div class="exit">
-        <img src="images/exit.svg" width="100%" alt="" />
-      </div>
-
-      <img src="images/ring.png" id="ring" class="img1" alt="" />
-
-      <img src="images/info.svg" class="info" alt="" />
-
-      <img src="images/arrow.svg" class="arrow" alt="" />
-
-      <img src="images/money.svg" class="money" alt="" />
-
-      <button class="take">
-        <img src="images/take.svg" alt="" />
-      </button>
-      <button class="betok">
-        <img src="images/betok.svg" alt="" />
-      </button>
-
-      <img src="images/shining.svg" class="shining" alt="" />
     </div>
+ 
+    <div
+      style="
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        padding-left: 25%;
+        padding-right: 25%;
+      "
+    >
+      <span
+        style="
+          position: absolute;
+          text-align: center;
+          width: 50%;
+          padding: 5px;
+          font-size: 1.5vw;
+        "
+      >
+        Hellow World</span
+      >
+      <img
+        id=""
+        style="z-index: 9"
+        src="images/footer.svg"
+        class="info"
+        width="100%"
+        alt="score"
+      />
+    </div>
+  
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
     <script>
-      function rotate(angle) {
-        var image = document.getElementById("ring");
-        let rotateAngle = Number(image.getAttribute("rotangle")) + angle;
-        image.setAttribute(
-          "style",
-          "transform: rotate(" + rotateAngle + "deg)"
-        );
-        image.setAttribute("rotangle", "" + rotateAngle);
+      function send(n1) {
+        dest = document.getElementById("w" + n1);
+        var rect = dest.getBoundingClientRect();
+        var x2 = rect.left;
+        var y2 = rect.top;
+        var elem = document.getElementById("myAnimation");
+        var rect2 = elem.getBoundingClientRect();
+        elem.style.left = x2 + "px";
+        elem.style.top = y2 + "px";
+        elem.style.transition = "all 5s ease";
+        sendGlow(n1);
+        //sendGlowStop(n1);
       }
+      function sendGlow(n1) {
+        elem = document.getElementById("w" + n1);
+        elem.style.animation = "outerglow 1s linear infinite";
+        elem.style.borderRadius = "50%";
+      }
+
+      function sendGlowStop(n1) {
+        dest = document.getElementById("w" + n1);
+        elem.style.animation = "";
+        elem.style.borderRadius = "";
+      }
+
+      function reset() {
+        var elem = document.getElementById("myAnimation");
+        var rect2 = elem.getBoundingClientRect();
+        elem.style.left = "45%";
+        elem.style.top = "45%";
+        elem.style.transition = "all 0s ease";
+      }
+
+      function activeScore() {
+        var elem = document.getElementById("score");
+        elem.style.animation = "innerglow 1s linear infinite";
+        elem.style.borderRadius = "50%";
+      }
+
+      function activeTime() {
+        var elem = document.getElementById("time");
+        elem.style.animation = "innerglow 1s linear infinite";
+        elem.style.borderRadius = "50%";
+      }
+      function activeWinner() {
+        var elem = document.getElementById("winner");
+        elem.style.animation = "innerglow 1s linear infinite";
+        elem.style.borderRadius = "50%";
+      }
+
+      function activeScore2() {
+        var elem = document.getElementById("score");
+        elem.style.animation = "";
+        elem.style.borderRadius = "";
+      }
+
+      function activeTime2() {
+        var elem = document.getElementById("time");
+        elem.style.animation = "";
+        elem.style.borderRadius = "";
+      }
+      function activeWinner2() {
+        var elem = document.getElementById("winner");
+        elem.style.animation = "";
+        elem.style.borderRadius = "";
+      }
+    </script>
+
+    <audio id="ring">
+      <source src="ring.mpeg" type="audio/mpeg" autoplay />
+    </audio>
+
+    <script>
+      function playAudioRin() {
+        var audio = new Audio("ring.mpeg");
+        audio.play();
+      }
+      function playAudioRing() {
+        var audio = new Audio("money.mpeg");
+        audio.play();
+      }
+      function rotate(angle) {
+        var img = document.getElementById("ring");
+        img.style.transform = "rotateZ(" + angle + "deg) translate(0px) ";
+      }
+      var sum = 0;
+      var num = 0;
+      function rotateme(angle) {
+        angle = 10 - angle;
+        sum = sum + 36 * num;
+        sum = sum + 720 + 36 * angle;
+        var img = document.getElementById("ring");
+        img.style.transform = "rotateZ(" + sum + "deg) translate(0px) ";
+        num = 10 - angle;
+      }
+
     </script>
   </body>
 </html>
