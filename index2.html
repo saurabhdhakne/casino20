@@ -24,8 +24,7 @@
   height: 100vh;
 }
 .rr1 {
-  height: 24vh;
-  margin-bottom: 2vh;
+  height: 25vh;
 }
 .rr1 img{
   position: absolute;
@@ -46,7 +45,7 @@
   padding: 2px;
 }
 #score1 {
-  font-size: 2.1em;
+  font-size: 1.7em;
   line-height: 1.9em;
   padding-top: 2px;
   position: absolute;
@@ -184,9 +183,9 @@ button {
 }
 
 .money {
-  width: 80%;
+  width: 85%;
   position: fixed;
-  top: 65%;
+  top: 60%;
   right: 50%;
   transform: translate(50%, -50%);
   z-index: 7;
@@ -263,20 +262,13 @@ button {
   z-index: 9;
 }
 
-
-@media only screen and (max-width: 1025px) {
-
-  #score1 {
-    font-size: 1.6em;
-  }
-}
 </style>
   </head>
   <body id="scene-container">
 
     <div class="container-fluid p-0">
       <div class="row">
-        <div class="col-4 row">
+        <div class="col-5 row">
           <div class="col-7 offset-1 text-center rr1">
             <img
               id="score"
@@ -410,9 +402,9 @@ button {
           <img src="images/money.svg" class="money" alt="" />
         </div>
 
-        <div class="col-4"></div>
+        <div class="col-2"></div>
 
-        <div class="col-4 row" style="margin: 0">
+        <div class="col-5 row" style="margin: 0">
           <div class="col-7 offset-4 text-center rr1">
             <img
               id="winner"
@@ -426,7 +418,7 @@ button {
             <p id="score" class="">000000</p>
           </div>
 
-          <div class="col-9 offset-3 text-center rr1">
+          <div class="col-8 offset-4 text-center rr1">
             <img
               id="time"
               src="images/last10data.svg"
