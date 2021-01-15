@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body onclick="rotate(720+9);">
+    <div class="containt">
+      <div class="group1 score">
+        <img id="" src="images/score.svg" alt="score" />
+        <p id="score">000000</p>
+      </div>
+      <div class="group1 time">
+        <img id="" src="images/time.svg" alt="" />
+        <p id="time">000000</p>
+      </div>
+      <div class="group1 winner">
+        <img id="" src="images/winner.svg" alt="" />
+        <p id="winner">000000</p>
+      </div>
+      <div class="group1 last10data">
+        <img id="" src="images/last10data.svg" alt="" />
+        <div class="data10">
+          <span id="score">1</span>
+          <span id="score">1</span>
+          <span id="score">1</span>
+          <span id="score">1</span>
+          <span id="score">1</span>
+          <span id="score">1</span>
+          <span id="score">1</span>
+          <span id="score">1</span>
+          <span id="score">1</span>
+          <span id="score">1</span>
+        </div>
+      </div>
+
+      <div class="div coinholder">
+        <img src="images/coinholder.svg" width="100%" alt="" />
+        <div class="coincontainer">
+          <button class="coin coin1">
+            <img width="100%" src="images/coin1.svg" alt="" />
+          </button>
+          <button class="coin coin5">
+            <img width="100%" src="images/coin5.svg" alt="" />
+          </button>
+          <button class="coin coin10">
+            <img width="100%" src="images/coin10.svg" alt="" />
+          </button>
+          <button class="coin coin50">
+            <img width="100%" src="images/coin50.svg" alt="" />
+          </button>
+        </div>
+      </div>
+
+      <div class="div coinholder2">
+        <img src="images/coinholder.svg" width="100%" alt="" />
+        <div class="coincontainer">
+          <button class="coin coin1">
+            <img width="100%" src="images/coin100.svg" alt="" />
+          </button>
+          <button class="coin coin5">
+            <img width="100%" src="images/coin500.svg" alt="" />
+          </button>
+          <button class="coin coin10">
+            <img width="100%" src="images/coin1k.svg" alt="" />
+          </button>
+          <button class="coin coin50">
+            <img width="100%" src="images/coin5k.svg" alt="" />
+          </button>
+        </div>
+      </div>
+      <div class="div bottom">
+        <img class="b1" src="images/1to0up.svg" alt="" />
+        <div class="data1t0">
+          <div id="score">1</div>
+          <div id="score">1</div>
+          <div id="score">1</div>
+          <div id="score">1</div>
+          <div id="score">1</div>
+          <div id="score">1</div>
+          <div id="score">1</div>
+          <div id="score">1</div>
+          <div id="score">1</div>
+          <div id="score">1</div>
+        </div>
+      </div>
+
+      <div class="div bottom2">
+        <img class="b1" src="images/1to0.svg" alt="" />
+      </div>
+
+      <div class="earn">
+        <img src="images/earn.svg" width="100%" alt="" />
+        <p>100000</p>
+      </div>
+      <div class="exit">
+        <img src="images/exit.svg" width="100%" alt="" />
+      </div>
+
+      <img src="images/ring.png" id="ring" class="img1" alt="" />
+
+      <img src="images/info.svg" class="info" alt="" />
+
+      <img src="images/arrow.svg" class="arrow" alt="" />
+
+      <img src="images/money.svg" class="money" alt="" />
+
+      <button class="take">
+        <img src="images/take.svg" alt="" />
+      </button>
+      <button class="betok">
+        <img src="images/betok.svg" alt="" />
+      </button>
+
+      <img src="images/shining.svg" class="shining" alt="" />
+    </div>
+    <script>
+      function rotate(angle) {
+        var image = document.getElementById("ring");
+        let rotateAngle = Number(image.getAttribute("rotangle")) + angle;
+        image.setAttribute(
+          "style",
+          "transform: rotate(" + rotateAngle + "deg)"
+        );
+        image.setAttribute("rotangle", "" + rotateAngle);
+      }
+    </script>
+  </body>
+</html>
