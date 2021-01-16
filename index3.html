@@ -31,6 +31,7 @@
   position: absolute;
   top: 40%;
   left: 0;
+  z-index: 7;
   transform: translateY(-40%);
 }
 .rr2 {
@@ -115,7 +116,7 @@ h1 {
 }
 .data10-2 {
   position: fixed;
-  width: 85%;
+  width: 100%;
   top: 85%;
   right: 50%;
   transform: translate(50%, -50%);
@@ -201,7 +202,7 @@ button {
 }
 .ring {
   width: 100%;
-  z-index: 6;
+  z-index: 1;
 }
 
 .defaultRing2 {
@@ -277,14 +278,22 @@ button {
   }
   
   .money {
-      width: 90%; 
-      top: 60%;
+      width: 100%; 
+      top: 68%;
     transform: translate(50%, -50%);
   }
   .ring {
-  width: 100%;
-  z-index: 6;
-  } 
+    width: 100%;
+    z-index: 6;
+  }
+  .shining {
+    position: fixed;
+    width: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 8;
+    animation: blinker 1s linear infinite;
+} 
 
 }
 
@@ -318,7 +327,7 @@ button {
               <span> 00 </span> : <span> 00 </span>
             </p>
           </div>
-          <div class="col-10 text-center rr2">
+          <div class="col-10 text-center rr2" style="z-index:7">
             <div class="coinholder2 text-center">
               <img
                 src="images/coinholder.svg"
@@ -369,7 +378,7 @@ button {
           </div>
         </div>
 
-        <div class="col-6 offset-3" style="position: fixed">
+        <div class="col-8 offset-2" style="position: fixed">
           <img src="images/arraow.gif" class="arrow" alt="" />
           <img
             src="images/ring.png"
