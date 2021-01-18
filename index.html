@@ -184,7 +184,7 @@ button {
 }
 
 .money {
-  width: 80%;
+  width: 90%;
   position: fixed;
   top: 65%;
   right: 50%;
@@ -193,15 +193,17 @@ button {
 }
 .arrow {
   z-index: 8;
-  position: fixed;
-  width: 7%;
-  right: 46.5%;
-  top: -3%;
+  position: absolute;
+  width: 16%;
+  right: 42%;
+  top: -7%;
   transform: translateY(50%, -50%);
 }
 .ring {
   width: 100%;
   z-index: 6;
+  transition: all 2s ease;
+
 }
 
 .defaultRing2 {
@@ -275,16 +277,31 @@ button {
   .rr2{
     height: 18vh;
   }
-  
+  .ringct{
+    margin-top: 8vh;
+  }
   .money {
       width: 90%; 
-      top: 60%;
-    transform: translate(50%, -50%);
+      top: 68%;
+     transform: translate(50%, -50%);
   }
   .ring {
   width: 100%;
   z-index: 6;
   } 
+  .ptf{
+    padding-top: 5vh;
+  }
+  .shining {
+    margin-top: 10vh;
+  width: 60%;
+}
+  .data10-2{
+    width: 100%;
+  }
+  .ot10head{
+    font-size: 1.4em;
+  }
 
 }
 
@@ -294,8 +311,8 @@ button {
 
     <div class="container-fluid p-0">
       <div class="row">
-        <div class="col-4 row">
-          <div class="col-7 offset-1 text-center rr1">
+        <div class="col-4 row ptf">
+          <div class="col-7 offset-1 text-center rr1 ">
             <img
               id="score"
               src="images/score.svg"
@@ -315,7 +332,7 @@ button {
               alt="score"
             />
             <p id="score" onclick="activeTime()" class="">
-              <span> 00 </span> : <span> 00 </span>
+              <span> 45 </span>  <span></span>
             </p>
           </div>
           <div class="col-10 text-center rr2">
@@ -369,7 +386,7 @@ button {
           </div>
         </div>
 
-        <div class="col-6 offset-3" style="position: fixed">
+        <div class="col-6 offset-3 ringct" style="position: fixed">
           <img src="images/arraow.gif" class="arrow" alt="" />
           <img
             src="images/ring.png"
@@ -430,7 +447,7 @@ button {
 
         <div class="col-4"></div>
 
-        <div class="col-4 row" style="margin: 0">
+        <div class="col-4 row ptf" style="margin: 0">
           <div class="col-7 offset-4 text-center rr1">
             <img
               id="winner"
@@ -642,6 +659,7 @@ button {
         var img = document.getElementById("ring");
         img.style.transform = "rotateZ(" + angle + "deg) translate(0px) ";
       }
+      // rotate(120); 
       var sum = 0;
       var num = 0;
       function rotateme(angle) {
